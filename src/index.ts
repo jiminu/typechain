@@ -14,10 +14,11 @@ class Block {
             this.timeStamp    = timeStamp;
         }
     
-    static calculateBlockHash = (index: number, previousHash: string, timeStamp: number, data: string): string => CryptoJS.SHA256(index, + 
-                                                                                                                                  previousHash + 
-                                                                                                                                  timeStamp + 
-                                                                                                                                  data).toString();
+    static calculateBlockHash = (index: number, 
+                                 previousHash: string, 
+                                 timeStamp: number, 
+                                 data: string): string =>CryptoJS.SHA256(index + previousHash + timeStamp + data).toString();
+    
     static validateStructure = (block: Block): boolean => 
         typeof block.index === "number" && 
         typeof block.hash === "string" && 
